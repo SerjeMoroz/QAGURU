@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
 group = 'org.example'
@@ -10,8 +10,14 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation (
+            "org.junit:junit-bom:5.10.0",
+            "org.junit.jupiter:junit-jupiter",
+            "com.codeborne: selenide: 7.3.2")
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UFT-8'
 }
 
 test {
