@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.*;
 
 
@@ -5,7 +6,9 @@ public class JUnitExapmles {
 
 
     @BeforeAll
-    static void beforeAll() {
+    public static void beforeAll() {
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://demoqa.com";
         System.out.println("Here is beforeAll()");
     }
 
