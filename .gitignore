@@ -1,8 +1,25 @@
-.gradle
-.idea
-*.class
-.log
+build/
+!**/src/main/**
+!**/src/test/**
 
-### BUILD ###
-build
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Gradle ###
+.gradle
+
+### Logs ###
+*.log
+
+## macOS ###
+# General
+.DS_Store
+
+### gradle ###
+gradle
+
+
 
