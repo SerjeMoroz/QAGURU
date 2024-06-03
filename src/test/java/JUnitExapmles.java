@@ -1,11 +1,18 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Driver;
+import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.impl.Cleanup;
 import org.junit.jupiter.api.*;
+
+import static com.codeborne.selenide.Selenide.clearBrowserCookies;
+import static com.codeborne.selenide.Selenide.clearBrowserLocalStorage;
 
 
 public class JUnitExapmles {
 
 
     @BeforeAll
+//  Выполняется один раз перед всеми тестами
     public static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
@@ -13,28 +20,23 @@ public class JUnitExapmles {
     }
 
     @BeforeEach
-    void beforeEach() {
+//  Выполняется перед каждым тестом
+    public void beforeEach() {
         System.out.println("Here is beforeEach()");
     }
 
+    @AfterEach
+//  Выполняется после каждого теста
+    public void afterEach() {
+
+    }
 
     @AfterAll
-    static void afterAll() {
-        System.out.println("Here is afterAll");
+//  Выполняется один раз после всех тестов
+    public static void afterAll() {
+        clearBrowserLocalStorage();
+        clearBrowserCookies();
+        WebDriverRunner.getWebDriver().quit();
     }
 
-    @AfterEach
-    void afterEach() {
-        System.out.println("Here is afterEach");
-    }
-
-    @Test
-    void firstTest() {
-        System.out.println("    Here is firstTest()");
-    }
-
-    @Test
-    void secondTest() {
-        System.out.println("    Here is secondTest()");
-    }
 }
