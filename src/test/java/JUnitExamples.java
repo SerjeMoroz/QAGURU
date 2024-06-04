@@ -1,14 +1,12 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Driver;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.impl.Cleanup;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.clearBrowserCookies;
 import static com.codeborne.selenide.Selenide.clearBrowserLocalStorage;
 
 
-public class JUnitExapmles {
+public class JUnitExamples {
 
 
     @BeforeAll
