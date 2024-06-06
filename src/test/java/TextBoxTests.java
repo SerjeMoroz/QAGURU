@@ -13,25 +13,9 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class TextBoxTests extends JUnitExapmles{
+public class TextBoxTests extends JUnitExamples{
 
 
-//    @Test
-//   void fillFormTest() {
-//
-//        open("/text-box");
-//
-//        $("#userName").setValue("Sergei Moroz");
-//        $("#userEmail").setValue("sergei.moroz94test@gmail.com");
-//        $("#currentAddress").setValue("pushkina-kolotushkina");
-//        $("#permanentAddress").setValue("pushkina-kolotushkina2");
-//        $("#submit").click();
-//
-//        $("#output").shouldHave(text("Sergei Moroz"),
-//                text("sergei.moroz94test@gmail.com"),
-//                text("pushkina-kolotushkina"),
-//                text("pushkina-kolotushkina2"));
-//    }
 
     @Test
     public void practiceFormTest() {
