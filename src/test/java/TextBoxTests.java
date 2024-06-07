@@ -30,8 +30,10 @@ public class TextBoxTests extends JUnitExamples{
         $(".react-datepicker__year-select").selectOptionByValue("1994");
         $(".react-datepicker__month-select").selectOptionByValue("0");
         $(byXpath("//div[@class='react-datepicker__day react-datepicker__day--029 react-datepicker__day--weekend']")).click();
+        $("#subjectsInput").setValue("Math").pressEnter();
         $("label[for='hobbies-checkbox-3']").click();
         $(byXpath("//input[@id='uploadPicture']")).uploadFile(new File("images/picture.png"));
+//        $("#uploadPicture").uploadFile(new File("images/picture.png"));
         $("#currentAddress").setValue("Ne skajy");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
