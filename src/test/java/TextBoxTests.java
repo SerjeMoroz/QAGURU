@@ -41,7 +41,8 @@ public class TextBoxTests extends JUnitExamples{
         $(By.id("react-select-4-option-1")).click();
         $("#submit").click();
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(byXpath("//td[normalize-space()='Sergei Moroz']")).shouldHave(text("Sergei Moroz"));
+//        $(byXpath("//td[normalize-space()='Sergei Moroz']")).shouldHave(text("Sergei Moroz"));
+        $(byXpath("//td[text()='Student Name']/following-sibling::td")).shouldHave(text("Sergei Moroz"));
         $(byXpath("//td[normalize-space()='alberich@gmail.com']")).shouldHave(text("alberich@gmail.com"));
         $(byXpath("//td[normalize-space()='8005553535']")).shouldHave(text("8005553535"));
         $(byXpath("//td[normalize-space()='29 January,1994']")).shouldHave(text("29 January,1994"));
@@ -50,7 +51,7 @@ public class TextBoxTests extends JUnitExamples{
         $(byXpath("//td[normalize-space()='Uttar Pradesh Lucknow']")).shouldHave(text("Uttar Pradesh Lucknow"));
         $("#closeLargeModal").click();
 
+        //td[text()='Student Name']/following-sibling::td
     }
-
 
 }
