@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.*;
 
@@ -26,7 +27,8 @@ public class JUnitExamples {
     @AfterEach
 //  Выполняется после каждого теста
     public void afterEach() {
-
+//        Selenide.closeWindow();
+//        Selenide.closeWebDriver();
     }
 
     @AfterAll
@@ -34,7 +36,7 @@ public class JUnitExamples {
     public static void afterAll() {
         clearBrowserLocalStorage();
         clearBrowserCookies();
-        WebDriverRunner.getWebDriver().quit();
+        WebDriverRunner.getWebDriver().quit(); //quit browser
     }
 
 }
