@@ -23,5 +23,8 @@ tasks.withType(JavaCompile) {
 }
 
 test {
+
+//    systemProperty "chromeoptions.prefs","intl.accept_languages=en"
+
     useJUnitPlatform()
 }

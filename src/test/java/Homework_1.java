@@ -1,8 +1,5 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.selector.ByText;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestClassOrder;
 import org.openqa.selenium.By;
 
 import java.io.File;
@@ -13,7 +10,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class TextBoxTests extends JUnitExamples{
+public class Homework_1 extends JUnitExamples{
 
 
 
@@ -22,6 +19,8 @@ public class TextBoxTests extends JUnitExamples{
 
         Configuration.timeout = 10000;
         open("/automation-practice-form");
+
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
         $("#firstName").setValue("Sergei");
         $("#lastName").setValue("Moroz");

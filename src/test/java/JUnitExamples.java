@@ -14,7 +14,7 @@ public class JUnitExamples {
 //  Выполняется один раз перед всеми тестами
     public static void beforeAll() {
         Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
+//        Configuration.baseUrl = "https://demoqa.com";
         System.out.println("Here is beforeAll()");
     }
 
