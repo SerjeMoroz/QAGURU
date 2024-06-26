@@ -1,3 +1,4 @@
+import Hooks.JUnitExamples;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class Homework_1 extends JUnitExamples{
+public class Homework_1 extends JUnitExamples {
 
 
 
@@ -54,5 +55,7 @@ public class Homework_1 extends JUnitExamples{
 
         //td[text()='Student Name']/following-sibling::td
     }
+
+
 
 }

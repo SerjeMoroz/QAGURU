@@ -1,12 +1,10 @@
-import com.codeborne.selenide.Configuration;
+import Hooks.JUnitExamples;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.*;
 
 public class Homework_2 extends JUnitExamples {
 
