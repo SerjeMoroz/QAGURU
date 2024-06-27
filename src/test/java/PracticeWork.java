@@ -1,7 +1,10 @@
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.files.DownloadActions.click;
 
 
 import Hooks.JUnitExamples;
@@ -9,11 +12,13 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.selector.ByText;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
@@ -79,7 +84,7 @@ public class PracticeWork extends JUnitExamples {
     @Test
     public void testElementsTextBox() {
 
-        Configuration.timeout = 1000;
+        timeout = 1000;
         Faker faker = new Faker();
         String randomFirstName = faker.name().fullName();
         String randomEmail = faker.internet().emailAddress();
@@ -141,7 +146,7 @@ public class PracticeWork extends JUnitExamples {
     }
 
     public void findLocatorInTable(String column, String value) {
-        assert  $(byXpath("//div[text()='" + column + "']/ancestor::div[@class='rt-table']//div[@class='rt-tr-group']//div[text()='" + value + "']")).is(visible, Duration.ofSeconds(10)) : "Значение " + value + "в " +column + "не найдено";
+        assert $(byXpath("//div[text()='" + column + "']/ancestor::div[@class='rt-table']//div[@class='rt-tr-group']//div[text()='" + value + "']")).is(visible, Duration.ofSeconds(10)) : "Значение " + value + "в " + column + "не найдено";
     }
 
 
@@ -176,25 +181,114 @@ public class PracticeWork extends JUnitExamples {
         $(By.xpath("//h1[normalize-space()='Web Tables']")).shouldBe(visible);
 
 
-
         findLocatorInTable("First Name", randomFirstName);
-////        $(byXpath("//div[@role='grid']")).shouldHave(text(firstNameField.getValue()));
-////        $(byXpath("//div[contains(text(),'Last Name')]")).shouldHave(text(lastNameField.getValue()));
-////        $(byXpath("//div[contains(text(),'Email')]")).shouldHave(text(emailField.getValue()));
-////        $(byXpath("//div[contains(text(),'Age')]")).shouldHave(value("54"));
-////        $(byXpath("//div[contains(text(),'Salary')]")).shouldHave(value("545"));
-////        $(byXpath("//div[normalize-space()='']")).shouldHave(value("5454"));
-
-
-
-
-//    @Test
-//    public void testElementsClicks() {
-//
-//        open("/buttons");
-//
-//        $("#doubleClickBtn").doubleClick();
-//        $("#doubleClickMessage").shouldHave(text("You have done a double click"));
-//    }
     }
-}//div[@class='rt-tr-group']//div[text()='Cierra']
+
+    @Test
+    public void testElementsClicks() {
+
+        open("/buttons");
+
+        $(".text-center").shouldHave(text("Buttons"));
+
+        $("#doubleClickBtn").doubleClick();
+        $("#doubleClickMessage").shouldHave(text("You have done a double click"));
+
+        $("#rightClickBtn").contextClick();
+        $("#rightClickMessage").shouldHave(text("You have done a right click"));
+
+        $(byText("Click Me")).click();
+        $(byId("dynamicClickMessage")).shouldHave(text("You have done a dynamic click"));
+    }
+
+
+    @Test
+    public void testElementsLinks() {
+
+        open("/links");
+
+
+        $("#created").click();
+        $("#linkResponse").shouldHave(text("Link has responded with staus 201 and status text Created"));
+
+        $("#no-content").click();;
+        $("#linkResponse").shouldHave(text("Link has responded with staus 204 and status text No Content"));
+
+        $("#moved").click();
+        $("#linkResponse").shouldHave(text("Link has responded with staus 301 and status text Moved Permanently"));
+
+        $("#bad-request").click();
+        $("#linkResponse").shouldHave(text("Link has responded with staus 400 and status text Bad Request"));
+
+        $("#unauthorized").click();
+        $("#linkResponse").shouldHave(text("Link has responded with staus 401 and status text Unauthorized"));
+
+        $("#forbidden").click();
+        $("#linkResponse").shouldHave(text("Link has responded with staus 403 and status text Forbidden"));
+
+        $("#invalid-url").click();
+        $("#linkResponse").shouldHave(text("Link has responded with staus 404 and status text Not Found"));
+
+
+        String originalTab = getWebDriver().getWindowHandle();
+
+        $("#simpleLink").click();
+        switchTo().window(1);
+        $(".category-cards").shouldHave(text("Elements"));
+        closeWindow();
+        switchTo().window(originalTab);
+
+        $("#dynamicLink").click();
+        switchTo().window(1);
+        $(".category-cards").shouldHave(text("Forms"));
+        closeWindow();
+        switchTo().window(originalTab);
+
+    }
+
+    @Test
+    public void testElementsBrokenLinks() {
+        open("/broken");
+
+        $(".text-center").shouldHave(text("Broken Links - Images"));
+
+        $(byText("Click Here for Valid Link")).click();
+        $(".category-cards").shouldHave(text("Elements"));
+        back();
+
+        $(byText("Click Here for Broken Link")).click();
+        $(".example").shouldHave(text("This page returned a 500 status code. For a definition and common list of HTTP status codes, go here"));
+        back();
+    }
+
+    @Test
+    public void testElementsDownload() {
+        open("/upload-download");
+
+        $(".text-center").shouldHave(text("Upload and Download"));
+
+        $(byId("downloadButton")).click();
+
+        $(byXpath("//input[@id='uploadFile']")).uploadFile(new File("images/sampleFile.jpeg"));
+
+    }
+
+
+    @Test
+    public void testElementsDynamicProperties() {
+
+        timeout = 10000;
+
+        open("/dynamic-properties");
+
+        $(".text-center").shouldHave(text("Dynamic Properties"));
+
+        $(byText("This text has random Id")).shouldHave(text("This text has random Id"));
+
+        $("#enableAfter").shouldHave(visible).click();
+
+        $("#visibleAfter").shouldHave(visible).click();
+
+    }
+
+}
