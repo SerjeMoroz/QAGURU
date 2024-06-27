@@ -4,15 +4,10 @@ import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.files.DownloadActions.click;
 
 
 import Hooks.JUnitExamples;
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.selector.ByText;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -23,7 +18,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
-public class PracticeWork extends JUnitExamples {
+public class PracticeWorkElements extends JUnitExamples {
 
 
     public static void enterRandomFirstName(SelenideElement field, String randomFirstName) {
