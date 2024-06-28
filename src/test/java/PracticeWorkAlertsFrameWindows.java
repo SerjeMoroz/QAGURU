@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.files.DownloadActions.click;
-
+import static org.openqa.selenium.devtools.v123.page.Page.close;
 
 
 import Hooks.JUnitExamples;
@@ -48,11 +48,11 @@ public class PracticeWorkAlertsFrameWindows extends JUnitExamples {
         switchTo().window(originalTab);
 
         $("#messageWindowButton").click();
-        switchTo().window(1);
-        $("body").shouldHave(text("Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization."));
-        closeWindow();
+        executeJavaScript("window.open('about:blank', '_blank');");
+        $(byText("Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization."));
+        close();
         switchTo().window(originalTab);
+        $(".text-center").shouldHave(text("Browser Windows"));
 
     }
-
 }
