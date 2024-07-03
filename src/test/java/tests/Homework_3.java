@@ -1,10 +1,11 @@
-import com.codeborne.selenide.selector.ByText;
+package tests;
+
+import examples.JUnitExamples;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Homework_3 extends JUnitExamples {

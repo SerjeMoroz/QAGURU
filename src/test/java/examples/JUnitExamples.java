@@ -1,5 +1,6 @@
+package examples;
+
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.*;
 
@@ -13,6 +14,7 @@ public class JUnitExamples {
     @BeforeAll
 //  Выполняется один раз перед всеми тестами
     public static void beforeAll() {
+        Configuration.timeout = 10000;
         Configuration.browserSize = "1920x1080";
 //        Configuration.baseUrl = "https://demoqa.com";
         System.out.println("Here is beforeAll()");
