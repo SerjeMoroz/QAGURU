@@ -15,4 +15,5 @@ public class Constants {
    public static final String address = "Ne skajy";
    public static final String state = "Uttar Pradesh";
    public static final String city = "Lucknow";
+   public static final String TITLE_TEXT = "Student Registration Form";
 }

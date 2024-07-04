@@ -25,7 +25,7 @@ public class RegistrationPageTest extends TestBase {
                 .setAddress(address)
                 .setState(state)
                 .setCity(city)
-                .sendSubmitButton()
+                .clickSubmitButton()
                 .verifyResult("Student name", nameFirst + " " + nameLast)
                 .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", gender)
@@ -35,7 +35,6 @@ public class RegistrationPageTest extends TestBase {
                 .verifyResult("Hobbies", hobbies)
                 .verifyResult("Picture", picture)
                 .verifyResult("Address", address)
-                .verifyResult("State and City", state + " " + city)
-                .closeModalForm();
+                .verifyResult("State and City", state + " " + city);
     }
 }

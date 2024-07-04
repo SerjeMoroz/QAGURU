@@ -5,17 +5,18 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultsModal;
 
+
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
+import static examples.Constants.TITLE_TEXT;
 
 public class RegistrationPage {
-    private final String TITLE_TEXT = "Student Registration Form";
-    CalendarComponent calendarComponent = new CalendarComponent();
-    RegistrationResultsModal registrationResultsModal  = new RegistrationResultsModal();
+
+    RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
     private final SelenideElement
             FIRST_NAME_INPUT = $("#firstName"),
@@ -28,8 +29,8 @@ public class RegistrationPage {
             HOBBIES_RADIO_BUTTON = $("label[for='hobbies-checkbox-1']"),
             UPLOAD_PICTURE = $(byXpath("//input[@id='uploadPicture']")),
             ADDRESS_INPUT = $("#currentAddress"),
-            STATE_CITY_INPUT = $("div[class=' css-yk16xz-control'] div[class=' css-1hwfws3']"),
-            CITY_INPUT = $("div[id='stateCity-wrapper'] div:nth-child(3)"),
+            STATE_FIELD = $(byText("Select State")),
+            CITY_FIELD = $("#city"),
             SUBMIT_BUTTON = $("#submit"),
             CLOSE_MODAL_FORM_BUTTON = $("#closeLargeModal");
 
@@ -68,9 +69,7 @@ public class RegistrationPage {
 
     public RegistrationPage setBirthDate(String day, String month, String year) {
         DATE_OF_BIRTH.click();
-        $(".react-datepicker__month-select").selectOption(month);
-        $(".react-datepicker__year-select").selectOption(year);
-        $(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)").click();
+        new CalendarComponent().setDate(day, month, year);
         return this;
     }
 
@@ -95,18 +94,18 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(String state) {
-        STATE_CITY_INPUT.click();
+        STATE_FIELD.click();
         $(byText(state)).click();
         return this;
     }
 
     public RegistrationPage setCity(String city) {
-        CITY_INPUT.click();
+        CITY_FIELD.click();
         $(byText(city)).click();
         return this;
     }
 
-    public RegistrationPage sendSubmitButton() {
+    public RegistrationPage clickSubmitButton() {
         SUBMIT_BUTTON.click();
         return this;
     }

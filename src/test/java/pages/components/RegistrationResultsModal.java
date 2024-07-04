@@ -13,7 +13,7 @@ public class RegistrationResultsModal {
     }
 
     public void verifyResult(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent()
-                .shouldHave(text(value));
+        $(".table-responsive").$(byText(key)).sibling(0).shouldHave(text(value));
+
     }
 }
