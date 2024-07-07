@@ -1,4 +1,3 @@
-
 package tests;
 
 import org.junit.jupiter.api.Test;
@@ -26,7 +25,7 @@ public class RegistrationPageTest extends TestBase {
                 .setState(state)
                 .setCity(city)
                 .clickSubmitButton()
-                .verifyResult("Student name", nameFirst + " " + nameLast)
+                .verifyResult("Student Name", nameFirst + " " + nameLast)
                 .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", gender)
                 .verifyResult("Mobile", userPhone)
@@ -35,6 +34,8 @@ public class RegistrationPageTest extends TestBase {
                 .verifyResult("Hobbies", hobbies)
                 .verifyResult("Picture", picture)
                 .verifyResult("Address", address)
-                .verifyResult("State and City", state + " " + city);
+                .verifyResult("State and City", state + " " + city)
+                .closeModalForm();
     }
 }
+

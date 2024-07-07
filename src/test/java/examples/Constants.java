@@ -11,7 +11,7 @@ public class Constants {
    public static final String birthYear = "2000";
    public static final String userSubjects = "Maths";
    public static final String hobbies = "Sports";
-   public static final String picture = "images/picture.png";
+   public static final String picture = "picture.png";
    public static final String address = "Ne skajy";
    public static final String state = "Uttar Pradesh";
    public static final String city = "Lucknow";
