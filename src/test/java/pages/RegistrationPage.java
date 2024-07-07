@@ -18,6 +18,7 @@ import static examples.Constants.*;
 public class RegistrationPage {
 
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+    CalendarComponent calendarComponent = new CalendarComponent();
 
 
     private final SelenideElement
@@ -72,7 +73,7 @@ public class RegistrationPage {
 
     public RegistrationPage setBirthDate(String day, String month, String year) {
         DATE_OF_BIRTH.click();
-        new CalendarComponent().setDate(day, month, year);
+        calendarComponent.setDate(day, month, year);
         return this;
     }
 
