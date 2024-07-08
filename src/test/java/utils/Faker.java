@@ -32,7 +32,7 @@ public class Faker {
     }
 
     public static String generateDecimalNumber() {
-        double decimalNumber =  faker.number().randomDouble(3, 1, 1000);
+        double decimalNumber =  faker.number().randomDouble(10, 10, 10);
         String decimalNum = String.format("%.3f", decimalNumber);
         return decimalNum;
     }

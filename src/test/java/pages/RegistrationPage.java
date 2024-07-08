@@ -19,6 +19,7 @@ public class RegistrationPage {
 
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
     CalendarComponent calendarComponent = new CalendarComponent();
+    public static net.datafaker.Faker faker = new net.datafaker.Faker();
 
 
     private final SelenideElement
@@ -46,18 +47,18 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setFirstName(String value) {
-        FIRST_NAME_INPUT.setValue(value);
+    public RegistrationPage setFirstName(String firstName) {
+        FIRST_NAME_INPUT.setValue(firstName);
         return this;
     }
 
-    public RegistrationPage setLastName(String value) {
-        LAST_NAME_INPUT.setValue(value);
+    public RegistrationPage setLastName(String lastName) {
+        LAST_NAME_INPUT.setValue(lastName);
         return this;
     }
 
-    public RegistrationPage setEmail(String value) {
-        EMAIL_INPUT_FIELD.setValue(value);
+    public RegistrationPage setEmail(String email) {
+        EMAIL_INPUT_FIELD.setValue(email);
         return this;
     }
 
@@ -66,8 +67,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setPhone(String value) {
-        MOBILE_NUMBER_INPUT.setValue(value);
+    public RegistrationPage setPhoneNumber(String number) {
+        MOBILE_NUMBER_INPUT.setValue(number);
         return this;
     }
 
@@ -92,8 +93,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setAddress(String address) {
-        ADDRESS_INPUT.setValue(address);
+    public RegistrationPage setAddress(String text) {
+        ADDRESS_INPUT.setValue(text);
         return this;
     }
 

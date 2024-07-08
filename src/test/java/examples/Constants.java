@@ -1,6 +1,10 @@
 package examples;
 
 public class Constants {
+
+
+   public static net.datafaker.Faker faker = new net.datafaker.Faker();
+
    public static final String nameFirst = "Sergei";
    public static final String nameLast = "Moroz";
    public static final String userEmail = "alberich@gmail.com";
